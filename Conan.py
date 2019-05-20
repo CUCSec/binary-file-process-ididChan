@@ -10,9 +10,10 @@ def tamper(student_id):
       num = student_id[counter:counter+1]
       loop-=1
       counter+=1
-      change = 3*int(num)
+      num = int(num)
       if num==0:
         num = 10
+      change = 3*(num+1)
       f.seek(change)
       f.write(b'\x00\x00\x00')
 
