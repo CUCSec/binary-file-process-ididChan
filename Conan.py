@@ -5,16 +5,17 @@ def tamper(student_id):
   counter = 0
   loop = 12
   with open('lenna.bmp','r+b') as f:
-    f.seek(54)
-    while loop>0:
+    offset = 54
+    f.seek(offset)
+    while loop > 0:
       num = student_id[counter:counter+1]
-      loop-=1
-      counter+=1
       num = int(num)
-      if num==0:
+      loop -= 1
+      counter += 1
+      if num == 0:
         num = 10
-      change = 3*(num+1)
-      f.seek(change)
+      offset = 3 * num + offset
+      f.seek(offset)
       f.write(b'\x00\x00\x00')
 
 
